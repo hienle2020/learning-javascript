@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2><b>Fruits</b> render using map function</h2>
+    <ul id="fruits"></ul>
+    <h2>Languages render using map2 function</h2>
+    <ul id="languages"></ul>
+    <img src="map2.PNG" alt="">
+    <script>
+        // map function
+        const elementListFruit = document.getElementById('fruits');
+        const fruits = ['Mango', 'Banana', 'Apple']
+        const listFruits = fruits.map(function(item, index, array){
+            return `<li>${item}</li>`
+        })
+        elementListFruit.innerHTML = listFruits.join('');
+
+        // map2 function
+        Array.prototype.map2 = function(callback){
+            const output = [];
+            const arrayLength = this.length;
+            for(let i = 0; i< arrayLength; i++){
+                output.push(callback(this[i], i, this))
+            }
+            return output;
+        }
+        const elementListLang = document.getElementById('languages');
+        const languages= ['French', 'English', 'Spanish'];
+        const listLang = languages.map2(function(lang, index, array){
+            return `<li key=${index}>${lang}</li>`
+        })
+        elementListLang.innerHTML = listLang.join('');
+        
+
+    </script>
+</body>
+</html>
